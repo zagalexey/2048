@@ -1,0 +1,16 @@
+.field {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  background-color: #CDC0B4;
+  border-radius: 1.2rem;
+  justify-content: center;
+  align-items: center;
+}
+.field__number {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+  font-size: 4rem;
+  color: white;
+}
+
+/*# sourceMappingURL=Field.css.map */

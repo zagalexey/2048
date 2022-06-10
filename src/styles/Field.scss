@@ -1,0 +1,29 @@
+@import "variables.scss";
+
+.field {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  background-color: $background-fields;
+  border-radius: 1.2rem;
+  justify-content: center;
+  align-items: center;
+
+  &__number {
+    font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+    font-size: 4rem;
+    color: white;
+  }
+}
+
+//.unit {
+//  position: absolute;
+//  margin: 10px;
+//  display: flex;
+//  width: 100px;
+//  height: 100px;
+//  background-color: pink;
+//  border-radius: 1.2rem;
+//  justify-content: center;
+//  align-items: center;
+//}
