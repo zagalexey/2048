@@ -4,29 +4,31 @@ import BoardComponent from "./components/BoardComponent";
 import './App.css';
 import {Board} from "./models/Board";
 import {Unit} from "./models/Unit";
+import {Cell} from "./models/Cell";
 
 function App() {
     const [board, setBoard] = useState(new Board())
-
-    let unitArr: object[] = []
 
     useEffect(() => {
         restart()
     }, [])
 
-    function restart() {
-        const newBoard = new Board()
-        newBoard.initCells()
+    function updateBoard() {
+        console.log('Updating board')
+        const newBoard = board.getCopyBoard()
         setBoard(newBoard)
     }
-        console.log(board)
 
-    function addUnit() {
-        let randomX: number = Math.floor(Math.random() * 4)
-        let randomY: number = Math.floor(Math.random() * 4)
-        let newUnit = new Unit(randomX, randomY, 2)
-        unitArr.push(newUnit)
-        console.log(unitArr);
+    function restart() {
+        console.log('Restarting')
+        const newBoard = new Board()
+        newBoard.initCells()
+        let randomX = Math.floor(Math.random() * 4)
+        let randomY = Math.floor(Math.random() * 4)
+        newBoard.cells[randomX][randomY].value = 2
+        newBoard.cells[randomX][randomY].color = 'red'
+        newBoard.cells[randomX][randomY].isActive = true
+        setBoard(newBoard)
     }
 
     return (
@@ -34,8 +36,10 @@ function App() {
             <BoardComponent
                 board={board}
                 setBoard={setBoard}
+                updateBoard={updateBoard}
             />
-            <button onClick={addUnit}>Add Unit</button>
+            {/*<button>Add Unit</button>*/}
+            {/*<button onClick={restart}>Reset Board</button>*/}
         </div>
     );
 }
