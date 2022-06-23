@@ -25,12 +25,10 @@ export class Board {
     moveCell(cell: Cell, key: string): void {
         switch (key) {
             case 'ArrowLeft': {
-                const currentX: number = cell.x
-                const currentY: number = cell.y
-                if(currentX === 0) {
+                if(cell.x === 0) {
                     break
                 }else {
-                    this.switchCells(cell, this.cells[currentY][0])
+                    this.switchCells(cell, this.cells[cell.y][0])
                 }
                 break
             }
@@ -70,7 +68,6 @@ export class Board {
     }
 
     public initCells() {
-        console.log('Initializing new cells')
         for (let i = 0; i < 4; i++) {
             const row: Cell[] = []
             for (let j = 0; j < 4; j++) {

@@ -3,8 +3,6 @@ import BoardComponent from "./components/BoardComponent";
 
 import './App.css';
 import {Board} from "./models/Board";
-import {Unit} from "./models/Unit";
-import {Cell} from "./models/Cell";
 
 function App() {
     const [board, setBoard] = useState(new Board())
@@ -13,14 +11,16 @@ function App() {
         restart()
     }, [])
 
-    function updateBoard() {
-        console.log('Updating board')
-        const newBoard = board.getCopyBoard()
-        setBoard(newBoard)
-    }
+    useEffect(() => {
+        window.addEventListener('keyup', onKeyPress, true)
+        return () => {
+            window.removeEventListener('keyup', onKeyPress)
+        }
+    })
+
 
     function restart() {
-        console.log('Restarting')
+        console.log('restarting');
         const newBoard = new Board()
         newBoard.initCells()
         let randomX = Math.floor(Math.random() * 4)
@@ -31,15 +31,31 @@ function App() {
         setBoard(newBoard)
     }
 
+    function updateBoard() {
+        console.log('Updating board')
+        const newBoard = board.getCopyBoard()
+        setBoard(newBoard)
+    }
+
+    function onKeyPress(e: any): void {
+        for (let i = 0; i < board.cells.length; i++) {
+            for (let j = 0; j < board.cells.length; j++) {
+                if (board.cells[i][j].isActive) {
+                    board.moveCell(board.cells[i][j], e.key)
+                }
+            }
+        }
+        updateBoard()
+    }
+
+
     return (
         <div className="App">
             <BoardComponent
                 board={board}
                 setBoard={setBoard}
-                updateBoard={updateBoard}
             />
-            {/*<button>Add Unit</button>*/}
-            {/*<button onClick={restart}>Reset Board</button>*/}
+            {/*<button onClick={onKeyPress}>Click</button>*/}
         </div>
     );
 }
