@@ -2,8 +2,8 @@
   display: flex;
   width: 100px;
   height: 100px;
-  background-color: #CDC0B4;
-  border-radius: 1.2rem;
+  background-color: #CCC1B4;
+  border-radius: 0.5rem;
   justify-content: center;
   align-items: center;
 }

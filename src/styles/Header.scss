@@ -1,0 +1,19 @@
+.header {
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.reset-btn {
+  width: 20%;
+  height: 50%;
+  background-color: #8F7A65;
+  color: white;
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+}
