@@ -63,20 +63,22 @@ function App() {
     }
 
     function onKeyPress(e: any): void {
-        board.onKeyHandler(e.key)
-        console.log('combined values: ', board.onCombineValues)
-        const combinedValues = board.getCombinedValues()
-        if(combinedValues.length > 0) {
-            let newScore: number = 0
+        if(e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+            board.onKeyHandler(e.key)
+            console.log('combined values: ', board.onCombineValues)
+            const combinedValues = board.getCombinedValues()
+            if(combinedValues.length > 0) {
+                let newScore: number = 0
 
-            for (let i = 0; i < combinedValues.length; i++) {
-                newScore += combinedValues[i]
+                for (let i = 0; i < combinedValues.length; i++) {
+                    newScore += combinedValues[i]
+                }
+                setScore(newScore)
             }
-            setScore(newScore)
+            checkForColors(board)
+            board.addNewCell()
+            updateBoard()
         }
-        checkForColors(board)
-        board.addNewCell()
-        updateBoard()
     }
 
 
